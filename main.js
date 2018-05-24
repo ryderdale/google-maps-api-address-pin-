@@ -54,51 +54,49 @@ function initMap() {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
-            console.log();
+            console.log(pos);
             infoWindow.setPosition(pos);
             //tag for you are here
             //infoWindow.open(map);
             map.setCenter(pos);
+            var service = new google.maps.places.PlacesService(map);
+            service.nearbySearch({
+                location: pos,
+                radius: 500,
+                type: ['store']
+              }, callback);
+            
+          
+            function callback(results, status) {
+              if (status === google.maps.places.PlacesServiceStatus.OK) {
+                for (var i = 0; i < results.length; i++) {
+                  createMarker(results[i]);
+                }
+              }
+            }
+          
+            function createMarker(place) {
+              var placeLoc = place.geometry.location;
+              var marker = new google.maps.Marker({
+                map: map,
+                position: place.geometry.location
+              });
+          
+              google.maps.event.addListener(marker, 'click', function() {
+                infowindow.setContent(place.name);
+                infowindow.open(map, this);
+              });
+            }
         })
-        
+        console.log('Get Current Position');
     }
+}
     
-    var service = new google.maps.places.PlacesService(map);
-    service.nearbySearch({
-        location: pos,
-        radius: 500,
-        type: ['restaurant']
-    }, callback);
-
-    function callback(results, status) {
-    if (status === google.maps.places.PlacesServiceStatus.OK) {
-        for (var i = 0; i < results.length; i++) {
-        createMarker(results[i]);
-        }
-    }
-    }
-
-    function createMarker(place) {
-    var placeLoc = place.geometry.location;
-    var marker = new google.maps.Marker({
-        map: map,
-        position: place.geometry.location
-    });
-
-    google.maps.event.addListener(marker, 'click', function() {
-        infowindow.setContent(place.name);
-        infowindow.open(map, this);
-    });
-}
-}
 
 
 
 
 
-//Function to parse user input and input data into map function 
-// let callGoogle = "map = new google.maps.Map(document.getElementById('map'), {"
-// let centerCordintate = "center: 
-// function initMapInputFunction(){
-//     callGoogle 
-// }
+
+   
+    
