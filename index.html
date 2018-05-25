@@ -11,8 +11,19 @@
 <body>
     <h1>Google API Sampler</h1>
     <section class="search-container">
-        <input type="search" placeholder="Enter an address" class="search-box">
-        <button>Search</button>
+        <select id="placeCateogrySelection" class="category-bar">
+            <option value="restaurants">Restaurants</option>
+            <option value="amusement_park">Amusement Park</option>
+            <option value="art_gallery">Art gallery</option>
+            <option value="atm">Atm</option>
+            <option value="bar">Bar</option>
+            <option value="cafe">Cafe</option>
+            <option value="night_club">Night Club</option>
+            <option value="gym">Gym</option>
+            <option value="shopping_mall">Shopping Mall</option>
+            <option value="museum">Museum</option>    
+        </select>
+        <button id="search">Search</button>
     </section>
     <section class="map-container">
         <div class="map" id="map"></div>
