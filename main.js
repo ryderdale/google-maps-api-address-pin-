@@ -1,33 +1,7 @@
-// let googleMapsAPIJSKey = "AIzaSyDt1SS2o5nSute3-7poY0PHNFr4abz9prM";
+let pos = {lat: 30.265817399999996, lng: -97.7492271};
+let map;
+let infoWindow;
 
-// var map;
-
-// function initMap() {
-//     map = new google.maps.Map(document.getElementById('map'), {
-//     center: {lat: -34.397, lng: 150.644},
-//     zoom: 8
-//     });
-// }
-
-
-// function initMap() {
-//     map = new google.maps.Map(document.getElementById('map'), {
-//       center: {lat: -34.397, lng: 150.644},
-//       zoom: 6
-//     });
-//     infoWindow = new google.maps.InfoWindow;
-
-//     // Try HTML5 geolocation.
-//     if (navigator.geolocation) {
-//       navigator.geolocation.getCurrentPosition(function(position) {
-//         var pos = {
-//           lat: position.coords.latitude,
-//           lng: position.coords.longitude
-//         };
-//         console.log(pos);
-//         })
-//     }
-// }
 let placeCategorySelection = document.getElementById('placeCateogrySelection');
 let categorySelection = 'restaurants';
 function categoryInitializationSelection(event) {
@@ -35,8 +9,6 @@ function categoryInitializationSelection(event) {
     categorySelection = placeCategorySelection.value;
     initMap();
     }
-
-
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -50,9 +22,6 @@ function categoryInitializationSelection(event) {
     };
 
 
-let map;
-let infoWindow;
-let pos = {lat: 30.265817399999996, lng: -97.7492271};
 document.getElementById('search').addEventListener('click', categoryInitializationSelection)
   
 function initMap() {
@@ -82,9 +51,6 @@ function initMap() {
         radius: 500,
         type: [categorySelection]
         }, callback);
-    
-    
-    
     
     function createMarker(place) {
         var placeLoc = place.geometry.location;
