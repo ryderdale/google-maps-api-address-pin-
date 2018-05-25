@@ -69,3 +69,27 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAf4iBFKygycmNZ48KDP8eE1cRveuNUscU&libraries=places&callback=initMap" async defer></script>
   </body>
 </html>
+
+
+
+
+
+<!-- set map fucniton is good  -->
+
+function setMap () {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            console.log("Fetching current position");
+            pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: pos,
+                zoom: 15
+            });
+            console.log(pos);
+        })
+    };
+
+}
