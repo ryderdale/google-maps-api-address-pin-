@@ -37,6 +37,19 @@ function categoryInitializationSelection(event) {
     }
 
 
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            console.log("Fetching current position");
+            pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+            console.log(pos);
+        })
+    };
+
+
 let map;
 let infoWindow;
 let pos = {lat: -34.397, lng: 150.644};
@@ -52,14 +65,14 @@ function initMap() {
     infoWindow = new google.maps.InfoWindow;
 
     // Try HTML5 geolocation.
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            console.log("Fetching current position");
-            pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            };
-            console.log(pos);
+    // if (navigator.geolocation) {
+    //     navigator.geolocation.getCurrentPosition(function(position) {
+    //         console.log("Fetching current position");
+    //         pos = {
+    //             lat: position.coords.latitude,
+    //             lng: position.coords.longitude
+    //         };
+            // console.log(pos);
             infoWindow.setPosition(pos);
             //tag for you are here
             //infoWindow.open(map);
@@ -92,10 +105,10 @@ function initMap() {
                 infoWindow.open(map, this);
               });
             }
-        })
+        }
         console.log('Get Current Position');
-    }
-}
+    
+
     
 
 

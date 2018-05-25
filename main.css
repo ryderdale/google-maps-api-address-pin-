@@ -3,9 +3,6 @@ html body {
     flex-direction: column;
     padding-top: 2%;
     align-items: center;
-    height: 100%;
-        margin: 0;
-        padding: 0;
 }
 
 h1 {
